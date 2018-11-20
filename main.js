@@ -4,7 +4,7 @@ const violeta = document.getElementById('violeta')
 const naranja = document.getElementById('naranja')
 const verde = document.getElementById('verde')
 const btnEmpezar = document.getElementById('btnEmpezar')
-const LAST_LEVEL = 15
+const LAST_LEVEL = 10
 
 class Juego {
     constructor() {
@@ -16,7 +16,8 @@ class Juego {
     initialize() {
         this.nextLevel = this.nextLevel.bind(this)
         this.selectColor = this.selectColor.bind(this)
-        btnEmpezar.classList.add('hide')
+        this.toggleBtnStart()
+        // btnEmpezar.classList.add('hide')
         this.level = 1
         this.colores = {
             celeste,
@@ -26,6 +27,14 @@ class Juego {
         }
     }
     
+    toggleBtnStart() {
+        if (btnEmpezar.classList.contains('hide')) {
+            btnEmpezar.classList.remove('hide')
+        } else {
+            btnEmpezar.classList.add('hide')
+        }
+    }
+
     generateSecuence() {
         this.secuence = new Array(10).fill(0).map(n => Math.floor(Math.random()* 4))
     }
